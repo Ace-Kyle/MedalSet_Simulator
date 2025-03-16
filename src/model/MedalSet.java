@@ -42,12 +42,16 @@ public class MedalSet {
             MedalTag tag = entry.getKey();
 
             //only add if combine tag has 2 or greater
-            switch (AffectType.getAffectType(tag.typeid)){
-                case SKILL_1 -> {
-                    if (entry.getValue() >1) skill1.add( tag.getAffectByNumberCombineTag(  entry.getValue()));
-                }
-                case SKILL_2 -> {
-                    if
+            if (entry.getValue() >= 2) {
+                switch (AffectType.getAffectType(tag.typeid)){
+                    case SKILL_1         -> skill1.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+                    case SKILL_2         -> skill2.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+                    case DODGE           -> dodge.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+                    case CAPTURE_SPEED   -> captureSpeed.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+                    case INCREASE_DAMAGE -> increaseDamage.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+                    case DECREASE_DAMAGE -> decreaseDamage.add(tag.getAffectByNumberCombineTag(entry.getValue()));
+
+                    default              -> extraAffects.add(tag.getAffectByNumberCombineTag(entry.getValue()));
                 }
             }
         }
