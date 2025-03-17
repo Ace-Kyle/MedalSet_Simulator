@@ -27,3 +27,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/data/game_data.json
+/src/test/resources/game_data.json

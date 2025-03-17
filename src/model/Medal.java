@@ -1,7 +1,10 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Medal {
     private int medal_id;
     private String name;
@@ -15,6 +18,7 @@ public class Medal {
 
     public Medal(int id) {
     }
+    public Medal(){}
 
     // Getters and setters
     public int getMedal_id() { return medal_id; }

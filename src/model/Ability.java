@@ -1,7 +1,10 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ability {
     private List<Affect> affects;
     private int ability_id;
@@ -10,6 +13,7 @@ public class Ability {
     public Ability(int id) {
 
     }
+    public Ability(){}
 
     // Getters and setters
     public List<Affect> getAffects() { return affects; }

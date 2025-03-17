@@ -1,8 +1,11 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MedalTag {
     public int typeid;
     private int medal_tag_id;
@@ -11,6 +14,8 @@ public class MedalTag {
     private int set2_ability_id;
     private int set3_ability_id;
     private int sort_id;
+
+    public MedalTag(){}
 
     // Getters and setters
     public int getMedal_tag_id() { return medal_tag_id; }

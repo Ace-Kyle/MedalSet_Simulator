@@ -1,7 +1,10 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Character {
     private int chara_id;
     private String name;
@@ -17,6 +20,8 @@ public class Character {
     private int abillity1_id;
     private int abillity2_id;
     // Additional fields omitted for brevity, add as needed
+
+    public Character(){}
 
     // Getters and setters
     public int getChara_id() { return chara_id; }
