@@ -7,7 +7,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GameData {
     private List<Ability> ability;
-    private List<Character> character;
+    private List<Character> charas;
     private List<Medal> medal;
     private List<MedalTag> medal_tag;
 
@@ -15,8 +15,8 @@ public class GameData {
     public List<Ability> getAbility() { return ability; }
     public void setAbility(List<Ability> ability) { this.ability = ability; }
 
-    public List<Character> getCharacter() { return character; }
-    public void setCharacter(List<Character> character) { this.character = character; }
+    public List<Character> getCharas() { return charas; }
+    public void setCharas(List<Character> charas) { this.charas = charas; }
 
     public List<Medal> getMedal() { return medal; }
     public void setMedal(List<Medal> medal) { this.medal = medal; }

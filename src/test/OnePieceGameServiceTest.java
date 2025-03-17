@@ -1,7 +1,6 @@
 package test;
 
 import model.*;
-import model.Character;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class OnePieceGameServiceTest {
         GameData gameData = gameService.getGameData();
         Assert.assertNotNull("Game data should not be null", gameData);
         Assert.assertFalse("Ability list should not be empty", gameData.getAbility().isEmpty());
-        Assert.assertFalse("Character list should not be empty", gameData.getCharacter().isEmpty());
+        Assert.assertFalse("Character list should not be empty", gameData.getCharas().isEmpty());
         Assert.assertFalse("Medal list should not be empty", gameData.getMedal().isEmpty());
         Assert.assertFalse("Medal tag list should not be empty", gameData.getMedal_tag().isEmpty());
     }

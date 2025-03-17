@@ -19,7 +19,7 @@ public class OnePieceGameService {
         gameData = mapper.readValue(new File(filePath), GameData.class);
         System.out.println("Game data loaded successfully:");
         System.out.println("- " + gameData.getAbility().size() + " abilities");
-        System.out.println("- " + gameData.getCharacter().size() + " characters");
+        System.out.println("- " + gameData.getCharas().size() + " characters");
         System.out.println("- " + gameData.getMedal().size() + " medals");
         System.out.println("- " + gameData.getMedal_tag().size() + " medal tags");
     }
@@ -30,7 +30,7 @@ public class OnePieceGameService {
      * @return The matching Character or null if not found
      */
     public Character getCharacterById(int characterId) {
-        return gameData.getCharacter().stream()
+        return gameData.getCharas().stream()
                 .filter(character -> character.getChara_id() == characterId)
                 .findFirst()
                 .orElse(null);

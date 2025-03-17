@@ -79,7 +79,7 @@ public class OnePieceGameApp {
     }
 
     private static void displayAllCharacters(OnePieceGameService gameService) {
-        List<model.Character> characters = gameService.getGameData().getCharacter();
+        List<model.Character> characters = gameService.getGameData().getCharas();
 
         System.out.println("\n===== All Available Characters =====");
         System.out.println("ID\t\tName\t\tNickname");
