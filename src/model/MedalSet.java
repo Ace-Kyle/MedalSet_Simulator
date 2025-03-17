@@ -25,7 +25,7 @@ public class MedalSet {
         return !AffectType.isInPredefinedType(typeId);
     }
 
-    private void setTags(){
+    /*private void setTags(){
         //<tagId, amount>
         Map<MedalTag, Integer> combine = new HashMap<>();
 
@@ -35,7 +35,7 @@ public class MedalSet {
             }
         }
         tags = combine;
-    }
+    }*/
 
     private void setEffects(){
         for(Map.Entry<MedalTag, Integer> entry : tags.entrySet()){
