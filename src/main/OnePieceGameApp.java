@@ -1,6 +1,7 @@
 package main;
 
 import model.Ability;
+import model.Character;
 import model.Medal;
 import model.MedalTag;
 import model.OnePieceGameService;
@@ -78,7 +79,7 @@ public class OnePieceGameApp {
     }
 
     private static void displayAllCharacters(OnePieceGameService gameService) {
-        List<Character> characters = gameService.getGameData().getCharacter();
+        List<model.Character> characters = gameService.getGameData().getCharacter();
 
         System.out.println("\n===== All Available Characters =====");
         System.out.println("ID\t\tName\t\tNickname");
