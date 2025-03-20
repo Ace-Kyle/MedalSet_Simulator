@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MedalTag {
 
+    int typeid; //add field for classify effects
+
     @JsonProperty("medal_tag_id")
     private int id;
     private String name;
@@ -40,6 +42,8 @@ public class MedalTag {
 
 
     public String getAffectByNumberCombineTag(int number) {
+        //depend on number of medal have the same specific tag,
+        //it will give correspond effects
         return switch (number){
             case 2 -> new Ability(this.effect_pair).getAffects().toString();
             case 3 -> new Ability(this.effect_trio).getAffects().toString();

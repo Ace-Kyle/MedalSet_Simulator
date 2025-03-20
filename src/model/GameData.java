@@ -8,8 +8,13 @@ import java.util.List;
 public class GameData {
     private List<Ability> ability;
     private List<Character> charas;
+    private List<Skill> chara_skill;
     private List<Medal> medal;
     private List<MedalTag> medal_tag;
+
+    //add Element, Class, TeamBoost
+    private List<ElementType> element;
+    private List<ClassType> role;
 
     // Getters and setters
     public List<Ability> getAbility() { return ability; }
@@ -23,4 +28,7 @@ public class GameData {
 
     public List<MedalTag> getMedal_tag() { return medal_tag; }
     public void setMedal_tag(List<MedalTag> medal_tag) { this.medal_tag = medal_tag; }
+
+    public List<ElementType> getElement() { return element; }
+    public List<ClassType> getRole() { return role; }
 }

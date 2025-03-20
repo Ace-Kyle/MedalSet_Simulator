@@ -1,12 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MedalSet {
-    List<Medal> medals = new ArrayList<Medal>();
+    List<Medal> medals = new LinkedList<>();
     Map<MedalTag, Integer> tags;
     List<String> extraAffects;
     List<String> skill1;
@@ -17,9 +14,9 @@ public class MedalSet {
     List<String> decreaseDamage;
 
     public MedalSet(int medal1, int medal2, int medal3) {
-        this.medals.add(new Medal(medal1));
-        this.medals.add(new Medal(medal2));
-        this.medals.add(new Medal(medal3));
+        this.medals.add(GameService.getInstance().getMedalById(medal1));
+        this.medals.add(GameService.getInstance().getMedalById(medal2));
+        this.medals.add(GameService.getInstance().getMedalById(medal3));
     }
     private static boolean isUniqueTrait(int typeId){
         return !AffectType.isInPredefinedType(typeId);

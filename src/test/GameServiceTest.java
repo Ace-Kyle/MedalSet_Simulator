@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class OnePieceGameServiceTest {
-    private OnePieceGameService gameService;
+public class GameServiceTest {
+    private GameService gameService;
 
     @Before
     public void setUp() throws IOException {
-        gameService = new OnePieceGameService();
+        gameService = new GameService();
         gameService.loadGameData("src/test/resources/game_data.json");
     }
 

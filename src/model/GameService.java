@@ -6,8 +6,11 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class OnePieceGameService {
-    private GameData gameData;
+public class GameService {
+    private static GameData gameData;
+    private static GameService INSTANCE;
+
+    public static GameService getInstance() { return INSTANCE;}
 
     /**
      * Loads game data from the specified JSON file
@@ -16,12 +19,16 @@ public class OnePieceGameService {
      */
     public void loadGameData(String filePath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        gameData = mapper.readValue(new File(filePath), GameData.class);
-        System.out.println("Game data loaded successfully:");
-        System.out.println("- " + gameData.getAbility().size() + " abilities");
-        System.out.println("- " + gameData.getCharas().size() + " characters");
-        System.out.println("- " + gameData.getMedal().size() + " medals");
-        System.out.println("- " + gameData.getMedal_tag().size() + " medal tags");
+        if (gameData == null) {
+            gameData = mapper.readValue(new File(filePath), GameData.class);
+            System.out.println("Game data loaded successfully:");
+            System.out.println("- " + gameData.getAbility().size() + " abilities");
+            System.out.println("- " + gameData.getCharas().size() + " characters");
+            System.out.println("- " + gameData.getMedal().size() + " medals");
+            System.out.println("- " + gameData.getMedal_tag().size() + " medal tags");
+        } else {
+            System.out.println("Game data is already loaded!");
+        }
     }
 
     /**
@@ -31,7 +38,7 @@ public class OnePieceGameService {
      */
     public Character getCharacterById(int characterId) {
         return gameData.getCharas().stream()
-                .filter(character -> character.getChara_id() == characterId)
+                .filter(character -> character.getId() == characterId)
                 .findFirst()
                 .orElse(null);
     }
@@ -43,7 +50,7 @@ public class OnePieceGameService {
      */
     public Medal getMedalById(int medalId) {
         return gameData.getMedal().stream()
-                .filter(medal -> medal.getMedal_id() == medalId)
+                .filter(medal -> medal.getId() == medalId)
                 .findFirst()
                 .orElse(null);
     }
@@ -55,7 +62,7 @@ public class OnePieceGameService {
      */
     public MedalTag getMedalTagById(int tagId) {
         return gameData.getMedal_tag().stream()
-                .filter(tag -> tag.getMedal_tag_id() == tagId)
+                .filter(tag -> tag.getId() == tagId)
                 .findFirst()
                 .orElse(null);
     }
@@ -170,7 +177,7 @@ public class OnePieceGameService {
         if (medalAbility != null) {
             // Create a special "Medal Base Ability" tag to distinguish individual medal abilities
             MedalTag medalBaseTag = new MedalTag();
-            medalBaseTag.setMedal_tag_id(0); // Use 0 to indicate it's not a real tag ID
+            medalBaseTag.setId(0); // Use 0 to indicate it's not a real tag ID
             medalBaseTag.setName("Medal Base: " + medal.getName());
 
             List<Ability> abilities = activatedTagSets.getOrDefault(medalBaseTag, new ArrayList<>());
@@ -205,7 +212,9 @@ public class OnePieceGameService {
      * Get the GameData object
      * @return The loaded game data
      */
-    public GameData getGameData() {
+    public static GameData getGameData() {
         return gameData;
     }
+
+
 }
