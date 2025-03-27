@@ -240,5 +240,12 @@ public class GameService {
                 .orElse(null);
     }
 
+    public CharacterTag getCharacterTagById(int id) {
+        return gameData.getCharacterTag().stream()
+                .filter(tag -> tag.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
 
 }
