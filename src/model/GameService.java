@@ -233,8 +233,8 @@ public class GameService {
                 .findFirst()
                 .orElse(null);
     }
-    public ClassType getElementTypeById(int id) {
-        return gameData.getRole().stream()
+    public ElementType getElementTypeById(int id) {
+        return gameData.getElement().stream()
                 .filter(element -> element.getId() == id)
                 .findFirst()
                 .orElse(null);

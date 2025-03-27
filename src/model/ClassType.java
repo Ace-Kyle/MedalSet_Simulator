@@ -1,7 +1,9 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClassType {
     public ClassType(int classId) {
     }
@@ -29,4 +31,6 @@ public class ClassType {
     private String nameWithoutLeftover(){
         return this.name.replaceAll("\\(.*\\)", "");
     }
+    //getter and setter
+    public int getId() { return id; }
 }
