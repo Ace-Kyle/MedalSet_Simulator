@@ -3,6 +3,8 @@ package model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.IOException;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ClassType {
     public ClassType(int classId) {
@@ -33,4 +35,8 @@ public class ClassType {
     }
     //getter and setter
     public int getId() { return id; }
+
+    public static ClassType getClassTypeById(int id) throws IOException {
+        return GameService.getInstance().getClassTypeById(id);
+    }
 }

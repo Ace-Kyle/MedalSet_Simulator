@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.Nulls;
 import helper.Exporter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -45,6 +46,7 @@ public class Character {
     private int character_type;
 
     // Additional fields omitted for brevity, add as needed
+    private Rarity.RarityType rarity;
 
     public Character(){}
 
@@ -62,11 +64,36 @@ public class Character {
     public ClassType getClassType() throws IOException {
         return GameService.getInstance().getClassTypeById(this.class_id);
     }
+    public List<ClassType> getChangableClassTypes() throws IOException {
+        List<ClassType> list = new ArrayList<ClassType>();
+
+        GameService data = GameService.getInstance();
+        ClassType classType1 = data.getClassTypeById(this.change_role_id1);
+        ClassType classType2 = data.getClassTypeById(this.change_role_id2);
+        if (classType1 != null) list.add(classType1);
+        if (classType2 != null) list.add(classType2);
+
+        return list;
+    }
+
     public ElementType getElementType() throws IOException {
         return GameService.getInstance().getElementTypeById(this.element_id);
     }
+    //define character type (rarity) based on their property
+    public Rarity.RarityType defineRarity(){
+        if (this.getTeam_skill_id() > 110) return Rarity.RarityType.EX;
+        if (this.IsLegends()) return Rarity.RarityType.BF;
+        if (this.getStar() != 30) return Rarity.RarityType.STEP_UP;
+
+        return Rarity.RarityType.FREE;
+    }
 
     // Getters and setters
+
+
+    public void setRarity() {
+        this.rarity = defineRarity();
+    }
 
     public String getName() {
         return name;

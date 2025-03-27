@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.*;
 
 public class MedalSet {
@@ -13,7 +14,7 @@ public class MedalSet {
     List<String> increaseDamage;
     List<String> decreaseDamage;
 
-    public MedalSet(int medal1, int medal2, int medal3) {
+    public MedalSet(int medal1, int medal2, int medal3) throws IOException {
         this.medals.add(GameService.getInstance().getMedalById(medal1));
         this.medals.add(GameService.getInstance().getMedalById(medal2));
         this.medals.add(GameService.getInstance().getMedalById(medal3));

@@ -122,10 +122,10 @@ public class OnePieceGameApp {
 
     //testing
     private static void displayCharacterHasId(GameService gameService, Scanner scanner) throws JsonProcessingException {
-        //int chara_id = 400000581;
+        int chara_id = 400000581;
 
-        System.out.print("\nEnter character ID: ");
-        int chara_id = Integer.parseInt(scanner.nextLine());
+        /*System.out.print("\nEnter character ID: ");
+        int chara_id = Integer.parseInt(scanner.nextLine());*/
 
         Character character = gameService.getCharacterById(chara_id);
         if (character == null) {
@@ -135,7 +135,7 @@ public class OnePieceGameApp {
                     character.getChara_id(),
                     character.getName(),
                     character.getNickname());*/
-            System.out.printf("Found character:\n%s", Exporter.object2Json(character));
+            System.out.printf("Found character:\n%s\n", Exporter.object2Json(character));
         }
     }
 }
