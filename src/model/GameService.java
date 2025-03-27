@@ -1,6 +1,8 @@
 package model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -10,7 +12,13 @@ public class GameService {
     private static GameData gameData;
     private static GameService INSTANCE;
 
-    public static GameService getInstance() { return INSTANCE;}
+    public static GameService getInstance() throws IOException {
+        if (INSTANCE == null) {
+            INSTANCE = new GameService();
+            INSTANCE.loadGameData("data/game_data.json");
+        }
+        return INSTANCE;
+    }
 
     /**
      * Loads game data from the specified JSON file
@@ -19,6 +27,8 @@ public class GameService {
      */
     public void loadGameData(String filePath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
         if (gameData == null) {
             gameData = mapper.readValue(new File(filePath), GameData.class);
             System.out.println("Game data loaded successfully:");
@@ -214,6 +224,20 @@ public class GameService {
      */
     public static GameData getGameData() {
         return gameData;
+    }
+
+    //custom
+    public ClassType getClassTypeById(int id) {
+        return gameData.getRole().stream()
+                .filter(role -> role.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+    public ClassType getElementTypeById(int id) {
+        return gameData.getRole().stream()
+                .filter(element -> element.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
 

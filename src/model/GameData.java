@@ -6,6 +6,8 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GameData {
+    //field name must be the same in JSON
+    //otherwise, use @JsonProperty to mapping with new one
     private List<Ability> ability;
     private List<Character> charas;
     private List<Skill> chara_skill;
