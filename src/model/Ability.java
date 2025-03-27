@@ -2,6 +2,8 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,6 +16,15 @@ public class Ability {
 
     }
     public Ability(){}
+    //custom
+    public String getAffectDetail(){
+        //merge all affect detail into single one
+        List<String> list = new ArrayList<>();
+        for (Affect a : affects) {
+            list.add(a.getDetail());
+        }
+        return String.join("\n", list);
+    }
 
     // Getters and setters
     public List<Affect> getAffects() { return affects; }
