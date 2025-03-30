@@ -46,7 +46,7 @@ public class Character {
     private int character_type;
 
     // Additional fields omitted for brevity, add as needed
-    private Rarity.RarityType rarity;
+    private String rarity;
 
     public Character(){}
 
@@ -80,19 +80,19 @@ public class Character {
         return GameService.getInstance().getElementTypeById(this.element_id);
     }
     //define character type (rarity) based on their property
-    public Rarity.RarityType defineRarity(){
-        if (this.getTeam_skill_id() > 110) return Rarity.RarityType.EX;
-        if (this.IsLegends()) return Rarity.RarityType.BF;
-        if (this.getStar() != 30) return Rarity.RarityType.STEP_UP;
+    public String getRarity(){
+        if (this.getTeam_skill_id() > 110) return Rarity.RarityType.EX.toString();
+        if (this.IsLegends()) return Rarity.RarityType.BF.toString();
+        if (this.getStar() != 30) return Rarity.RarityType.STEP_UP.toString();
 
-        return Rarity.RarityType.FREE;
+        return Rarity.RarityType.FREE.toString();
     }
 
     // Getters and setters
 
 
     public void setRarity() {
-        this.rarity = defineRarity();
+        this.rarity = getRarity();
     }
 
     public String getName() {

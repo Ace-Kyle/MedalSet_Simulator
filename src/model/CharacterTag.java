@@ -12,11 +12,11 @@ public class CharacterTag {
     public CharacterTag() {
     }
 
-    public int getChara_tag_id() {
+    public int getId() {
         return chara_tag_id;
     }
 
-    public void setChara_tag_id(int chara_tag_id) {
+    public void setId(int chara_tag_id) {
         this.chara_tag_id = chara_tag_id;
     }
 

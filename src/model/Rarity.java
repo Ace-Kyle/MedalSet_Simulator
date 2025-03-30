@@ -15,4 +15,6 @@ public class Rarity {
 
         return RarityType.FREE.toString();
     }
+
+
 }
