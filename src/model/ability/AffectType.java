@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AffectType {
-    enum Type {
+    public enum Type {
         SKILL_1,
         SKILL_2,
         DODGE,
