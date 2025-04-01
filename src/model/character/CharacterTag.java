@@ -16,7 +16,7 @@ public class CharacterTag {
 
     //custom
     public String formatList(List<CharacterTag> tags){
-
+        return "";
     }
 
     public int getId() {
