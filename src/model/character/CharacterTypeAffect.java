@@ -1,4 +1,4 @@
-package model;
+package model.character;
 
 public class CharacterTypeAffect {
     private int total_level;

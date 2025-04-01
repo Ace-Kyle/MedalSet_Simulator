@@ -1,9 +1,9 @@
 package export;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import model.CharacterTrait;
-import model.ClassType;
-import model.Skill;
+import model.character.CharacterTrait;
+import model.character.ClassType;
+import model.character.Skill;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class Character {
     private List<String> abillity2;
     private CharacterTrait traitList;
 
-    public Character(model.Character character) throws IOException {
+    public Character(model.character.Character character) throws IOException {
         this.id = character.getId();
         this.name = character.getName();
         this.nickname = character.getNickname();

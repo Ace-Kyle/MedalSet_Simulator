@@ -1,4 +1,4 @@
-package model;
+package model.character;
 
 public class Rarity {
     enum RarityType {

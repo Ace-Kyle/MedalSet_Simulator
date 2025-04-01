@@ -1,4 +1,4 @@
-package model;
+package model.character;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

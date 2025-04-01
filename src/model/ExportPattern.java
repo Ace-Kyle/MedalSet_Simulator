@@ -1,5 +1,7 @@
 package model;
 
+import model.character.Character;
+
 import java.util.HashMap;
 import java.util.Map;
 

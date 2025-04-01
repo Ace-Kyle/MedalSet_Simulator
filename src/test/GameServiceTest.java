@@ -1,6 +1,7 @@
 package test;
 
 import model.*;
+import model.character.Character;
 import model.medal.Medal;
 import model.medal.MedalTag;
 import org.junit.Assert;
@@ -32,7 +33,7 @@ public class GameServiceTest {
 
     @Test
     public void testGetCharacterById() {
-        model.Character luffy = gameService.getCharacterById(400000001);
+        Character luffy = gameService.getCharacterById(400000001);
         Assert.assertNotNull("Should find Luffy character", luffy);
         Assert.assertEquals("Character name should match", "Monkey D. Luffy", luffy.getName());
     }
