@@ -90,7 +90,16 @@ public class Character {
 
     // Getters and setters
 
-
+    public List<CharacterTag> getTagList() throws IOException {
+        List<CharacterTag> list = new ArrayList<>();
+        GameService data = GameService.getInstance();
+        for (int id : tag_ids) {
+            CharacterTag tag = data.getCharacterTagById(id);
+            //if tag with id is not found, add null CharacterTag
+            list.add(tag != null ? tag : new CharacterTag());
+        }
+        return list;
+    }
     public void setRarity() {
         this.rarity = getRarity();
     }

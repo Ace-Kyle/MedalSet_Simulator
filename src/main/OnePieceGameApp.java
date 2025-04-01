@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import helper.Exporter;
 import model.Ability;
 import model.Character;
-import model.Medal;
-import model.MedalTag;
+import model.medal.Medal;
+import model.medal.MedalTag;
 import model.GameService;
 
 import java.io.IOException;

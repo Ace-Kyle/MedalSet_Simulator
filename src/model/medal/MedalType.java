@@ -1,4 +1,4 @@
-package model;
+package model.medal;
 
 public enum MedalType {
     NORMAL,

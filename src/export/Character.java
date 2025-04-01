@@ -1,8 +1,6 @@
 package export;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import model.CharacterTrait;
 import model.ClassType;
 import model.Skill;
@@ -50,6 +48,8 @@ public class Character {
             this.changeRoles.add(classType.getName());
         }
         this.is_change_class = character.isIs_change_class();
-        this.rarity = character.get
+        this.rarity = character.getRarity();
+        this.star = character.getStar();
+
     }
 }
