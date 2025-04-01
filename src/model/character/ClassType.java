@@ -1,7 +1,8 @@
-package model;
+package model.character;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import model.GameService;
 
 import java.io.IOException;
 

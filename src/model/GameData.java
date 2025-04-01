@@ -1,6 +1,8 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import model.character.*;
+import model.character.Character;
 import model.medal.Medal;
 import model.medal.MedalTag;
 
@@ -11,7 +13,7 @@ public class GameData {
     //field name must be the same in JSON
     //otherwise, use @JsonProperty to mapping with new one
     private List<Ability> ability;
-    private List<Character> charas;
+    private List<model.character.Character> charas;
     private List<Skill> chara_skill;
     private List<Medal> medal;
     private List<MedalTag> medal_tag;
@@ -26,7 +28,7 @@ public class GameData {
     public List<Ability> getAbility() { return ability; }
     public void setAbility(List<Ability> ability) { this.ability = ability; }
 
-    public List<Character> getCharas() { return charas; }
+    public List<model.character.Character> getCharas() { return charas; }
     public void setCharas(List<Character> charas) { this.charas = charas; }
 
     public List<Medal> getMedal() { return medal; }

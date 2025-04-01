@@ -3,7 +3,7 @@ package main;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import helper.Exporter;
 import model.Ability;
-import model.Character;
+import model.character.Character;
 import model.medal.Medal;
 import model.medal.MedalTag;
 import model.GameService;
@@ -84,7 +84,7 @@ public class OnePieceGameApp {
     }
 
     private static void displayAllCharacters(GameService gameService) {
-        List<model.Character> characters = gameService.getGameData().getCharas();
+        List<Character> characters = gameService.getGameData().getCharas();
 
         System.out.println("\n===== All Available Characters =====");
         System.out.println("ID\t\tName\t\tNickname");
