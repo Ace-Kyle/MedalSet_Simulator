@@ -2,11 +2,11 @@ package main;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import helper.Exporter;
-import model.Ability;
+import model.ability.Ability;
 import model.character.Character;
 import model.medal.Medal;
 import model.medal.MedalTag;
-import model.GameService;
+import model.service.GameService;
 
 import java.io.IOException;
 import java.util.List;

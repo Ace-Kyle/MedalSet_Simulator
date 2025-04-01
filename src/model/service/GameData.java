@@ -1,6 +1,7 @@
-package model;
+package model.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import model.ability.Ability;
 import model.character.*;
 import model.character.Character;
 import model.medal.Medal;
