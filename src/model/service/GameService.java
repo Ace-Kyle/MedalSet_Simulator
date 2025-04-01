@@ -1,7 +1,9 @@
-package model;
+package model.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import model.ability.Ability;
+import model.ability.Affect;
 import model.character.Character;
 import model.character.CharacterTag;
 import model.character.ClassType;

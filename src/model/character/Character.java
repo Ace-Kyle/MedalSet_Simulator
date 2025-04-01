@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 import helper.Exporter;
-import model.GameService;
+import model.service.GameService;
 
 import java.io.IOException;
 import java.util.ArrayList;

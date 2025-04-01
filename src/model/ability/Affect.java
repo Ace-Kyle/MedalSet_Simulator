@@ -1,9 +1,9 @@
-package model;
+package model.ability;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Affect {
+public class Affect {
     private int no;
     private int affect_type;
     private Integer affect2_type;

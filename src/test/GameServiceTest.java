@@ -1,9 +1,11 @@
 package test;
 
-import model.*;
+import model.ability.Ability;
 import model.character.Character;
 import model.medal.Medal;
 import model.medal.MedalTag;
+import model.service.GameData;
+import model.service.GameService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
