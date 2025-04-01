@@ -2,6 +2,8 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CharacterTag {
 
@@ -10,6 +12,11 @@ public class CharacterTag {
     CharacterTypeAffect[] chara_type_effects;
 
     public CharacterTag() {
+    }
+
+    //custom
+    public String formatList(List<CharacterTag> tags){
+
     }
 
     public int getId() {

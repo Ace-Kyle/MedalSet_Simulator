@@ -1,7 +1,8 @@
-package model;
+package model.medal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import model.Ability;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MedalTag {

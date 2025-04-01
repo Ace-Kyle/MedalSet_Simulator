@@ -1,6 +1,8 @@
 package test;
 
 import model.*;
+import model.medal.Medal;
+import model.medal.MedalTag;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

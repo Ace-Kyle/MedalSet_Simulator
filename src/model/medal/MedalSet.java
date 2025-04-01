@@ -1,4 +1,7 @@
-package model;
+package model.medal;
+
+import model.AffectType;
+import model.GameService;
 
 import java.io.IOException;
 import java.util.*;

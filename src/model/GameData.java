@@ -1,6 +1,8 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import model.medal.Medal;
+import model.medal.MedalTag;
 
 import java.util.List;
 

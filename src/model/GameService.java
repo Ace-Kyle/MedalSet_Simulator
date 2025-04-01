@@ -2,6 +2,8 @@ package model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import model.medal.Medal;
+import model.medal.MedalTag;
 
 import java.io.File;
 import java.io.IOException;

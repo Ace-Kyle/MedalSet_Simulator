@@ -17,6 +17,6 @@ public class CharacterTypeAffect {
     }
 
     private String getAffect(){
-        return new Ability(this.ability_id).
+        return "";
     }
 }
