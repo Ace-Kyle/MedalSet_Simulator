@@ -2,7 +2,11 @@ package model.medal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import model.ability.Ability;
+import model.service.GameService;
 
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,13 +26,18 @@ public class Medal {
 
     public Medal(){}
 
-    public List<MedalTag> getTagList(){
+    public List<MedalTag> getTagList() throws IOException {
         List<MedalTag> list = new LinkedList<>();
         GameService gs = GameService.getInstance();
         for (int tagId: this.tag_ids){
             MedalTag foundTag = gs.getMedalTagById(tagId);
             if (foundTag != null) list.add(foundTag);
         }
+        return list;
+    }
+
+    public Ability getUniqueTrait() throws IOException {
+        return GameService.getInstance().getAbilityById(id);
     }
 
     //TODO check later
