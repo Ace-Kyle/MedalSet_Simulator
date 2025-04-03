@@ -10,14 +10,6 @@ import java.util.*;
 public class MedalSet {
     Medal[] medalSet = new Medal[3];
     Map<MedalTag, Integer> tagCoAffect;
-    List<MedalTag> tagList;
-    List<String> extraAffects;
-    List<String> skill1;
-    List<String> skill2;
-    List<String> dodge;
-    List<String> captureSpeed;
-    List<String> increaseDamage;
-    List<String> decreaseDamage;
 
     public MedalSet(int medal1, int medal2, int medal3) throws IOException {
         GameService gs = GameService.getInstance();
@@ -25,25 +17,7 @@ public class MedalSet {
         medalSet[1] = gs.getMedalById(medal2);
         medalSet[2] = gs.getMedalById(medal3);
     }
-    private static boolean isUniqueTrait(int typeId){
-        return !AffectType.isInPredefinedType(typeId);
-    }
 
-    /*private void setTags(){
-        //<tagId, amount>
-        Map<MedalTag, Integer> combine = new HashMap<>();
-
-        for(Medal medal : medals){
-            for (MedalTag tag: medal.tags){
-                combine.put(tag, combine.getOrDefault(tag, 0) + 1);
-            }
-        }
-        tags = combine;
-    }*/
-
-    private void setEffects(){
-
-    }
 
     public void addOrReplace(Medal medal, int position){
         if (isValidPosition(position)) medalSet[position] = medal;
@@ -57,10 +31,12 @@ public class MedalSet {
         }
     }
     public Map<MedalTag, Integer> getCombineTags() throws IOException {
+
         Map<MedalTag, Integer> map = new HashMap<>();
         for (int i=0; i < this.medalSet.length; i++){
             List<MedalTag> tagsOfThisMedal = this.medalSet[i].getTagList();
             for (MedalTag tag : tagsOfThisMedal){
+                //count tag and their co-effect tags
                 map.put(tag,
                         map.getOrDefault(tag, 0) +1);
             }
