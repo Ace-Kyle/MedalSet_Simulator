@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import model.ability.Ability;
 
+import java.io.IOException;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MedalTag {
 
@@ -21,10 +23,18 @@ public class MedalTag {
     private int sort_id;
 
     public MedalTag(){}
-    @override
-    public boolean equal(MedalTag tag){
-        //check if it is instance of
-        return this.id == tag.getId();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MedalTag medalTag = (MedalTag) o;
+        return id == medalTag.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 
     // Getters and setters
@@ -47,14 +57,14 @@ public class MedalTag {
     public void setSort_id(int sort_id) { this.sort_id = sort_id; }
 
 
-    public Ability getAffectByNumberCombineTag(int number) {
+    public Ability getAffectByNumberCombineTag(int number) throws IOException {
         //depend on number of medal have the same specific tag,
         //it will give correspond effects
         return switch (number){
             //case 2 -> new Ability(this.effect_pair).getAffects().toString();
-            case 2 -> new Ability(this.effect_pair);
-            case 3 -> new Ability(this.effect_trio);
-            default -> "";
+            case 2 -> Ability.getInstanceById(effect_pair);
+            case 3 -> Ability.getInstanceById(effect_trio);
+            default -> null;
         };
     }
     public Ability getPairAffect(){ return new Ability(this.effect_pair);}

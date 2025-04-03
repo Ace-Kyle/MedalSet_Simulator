@@ -1,7 +1,9 @@
 package model.ability;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import model.service.GameService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,9 @@ public class Ability {
             list.add(a.getDetail());
         }
         return String.join("\n", list);
+    }
+    public static Ability getInstanceById(int id) throws IOException {
+        return GameService.getInstance().getAbilityById(id);
     }
 
     // Getters and setters
