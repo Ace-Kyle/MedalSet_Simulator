@@ -10,6 +10,7 @@ public class Ability {
     private List<Affect> affects;
     private int ability_id;
     private String icon_name;
+    private int affect_type;
 
     public Ability(int id) {
 
