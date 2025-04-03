@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class MedalSet {
-    List<Medal> medals = new LinkedList<>();
-    Map<MedalTag, Integer> tags;
+    Medal[] medalSet = new Medal[3];
+    Map<MedalTag, Integer> tagCoAffect;
+    List<MedalTag> tagList;
     List<String> extraAffects;
     List<String> skill1;
     List<String> skill2;
@@ -18,9 +19,10 @@ public class MedalSet {
     List<String> decreaseDamage;
 
     public MedalSet(int medal1, int medal2, int medal3) throws IOException {
-        this.medals.add(GameService.getInstance().getMedalById(medal1));
-        this.medals.add(GameService.getInstance().getMedalById(medal2));
-        this.medals.add(GameService.getInstance().getMedalById(medal3));
+        GameService gs = GameService.getInstance();
+        medalSet[0] = gs.getMedalById(medal1);
+        medalSet[1] = gs.getMedalById(medal2);
+        medalSet[2] = gs.getMedalById(medal3);
     }
     private static boolean isUniqueTrait(int typeId){
         return !AffectType.isInPredefinedType(typeId);
@@ -58,4 +60,32 @@ public class MedalSet {
         }
 
     }
+
+    public void addOrReplace(Medal medal, int position){
+        if (isValidPosition(position)) medalSet[position] = medal;
+    }
+    public void remove(int position){
+        if (isValidPosition(position)) this.medalSet[position] = null;
+    }
+    public void removeAll(){
+        for (int i=0; i < this.medalSet.length){
+            this.medalSet[i] = null;
+        }
+    }
+    Map<MedalTag, Integer> getCombineTags(){
+        Map<MedalTag, Integer> map = new HashMap<>();
+        for (int i=0; i < this.medalSet.length; i++){
+            List<MedalTag> tagsOfThisMedal = this.medalSet[i].getTagList();
+            for (MedalTag tag : tagsOfThisMedal){
+                map.put(tag,
+                        map.getOrDefault(tag, 0) +1)
+            }
+        }
+        return map;
+    }
+    private boolean isValidPosition(int position){
+        return position >= 0 && position < medalSet.length;
+    }
+    //getter and setter
+
 }

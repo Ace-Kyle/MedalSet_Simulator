@@ -22,6 +22,15 @@ public class Medal {
 
     public Medal(){}
 
+    public List<MedalTag> getTagList(){
+        List<MedalTag> list = new LinkedList<>();
+        GameService gs = GameService.getInstance();
+        for (int tagId: this.tag_ids){
+            MedalTag foundTag = gs.getMedalTagById(tagId);
+            if (foundTag != null) list.add(foundTag);
+        }
+    }
+
     //TODO check later
     public MedalType getMedalType(){
         if (is_event) return MedalType.EVENT;
