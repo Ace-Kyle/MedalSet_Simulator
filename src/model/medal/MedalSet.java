@@ -72,7 +72,7 @@ public class MedalSet {
             this.medalSet[i] = null;
         }
     }
-    Map<MedalTag, Integer> getCombineTags(){
+    public Map<MedalTag, Integer> getCombineTags(){
         Map<MedalTag, Integer> map = new HashMap<>();
         for (int i=0; i < this.medalSet.length; i++){
             List<MedalTag> tagsOfThisMedal = this.medalSet[i].getTagList();
