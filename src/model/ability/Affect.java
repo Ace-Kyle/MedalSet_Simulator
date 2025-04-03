@@ -2,6 +2,12 @@ package model.ability;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Affect {
     private int no;
@@ -13,6 +19,32 @@ public class Affect {
     private String detail;
     private Double affect_param1;
     private Double affect2_param1;
+
+    public Map<AffectType, List<Affect>> classifyAffectByAffectType(List<Ability> list) throws IOException {
+        Map<AffectType, List<Affect>> map = new HashMap<>();
+        for (Ability a : list){
+            //get list of effects from ability
+            for (Affect effect : a.getAffects()){
+
+                int affectTypeId = effect.getAffect_type();
+                AffectType type = AffectType.getAffectTypeById(affectTypeId);
+                List<Affect> group = map.getOrDefault(
+                        type,
+                        new LinkedList<Affect>());
+                group.add(effect);    //add affect to group
+                map.put(type, group); //add to result map
+            }
+        }
+        return map;
+    }
+
+    public static List<String> listAffectToListDetail(List<Affect> list){
+        List<String> listDetail = new LinkedList<>();
+        for (Affect a : list){
+            listDetail.add(a.getDetail());
+        }
+        return listDetail;
+    }
 
     // Getters and setters
     public int getNo() { return no; }

@@ -45,23 +45,6 @@ public class AffectType {
         return GameService.getInstance().getAffectTypeById(id);
     }
 
-    public Map<AffectType, List<Affect>> classifyAffectByAffectType(List<Ability> list) throws IOException {
-        Map<AffectType, List<Affect>> map = new HashMap<>();
-        for (Ability a : list){
-            //get list of effects from ability
-            for (Affect effect : a.getAffects()){
-
-                int affectTypeId = effect.getAffect_type();
-                AffectType type = AffectType.getAffectTypeById(affectTypeId);
-                List<Affect> group = map.getOrDefault(
-                        type,
-                        new LinkedList<Affect>());
-                group.add(effect);    //add affect to group
-                map.put(type, group); //add to result map
-            }
-        }
-        return map;
-    }
 
     @Override
     public boolean equals(Object o) {
