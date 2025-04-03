@@ -83,6 +83,35 @@ public class MedalSet {
         }
         return map;
     }
+    //Ability
+    public List<Ability> getAbilityFromTag(){
+        List<Ability> list = new LinkedList<>();
+        Map<MedalTag, Integer> combineTags = getCombineTags();
+
+        for (MedalTag tag : Map.entries(combineTags)){
+            Ability a = switch(map.get(tag)){
+                case 2 -> tag.getPairAffect();
+                case 3 -> tag.getTrioAffect();
+            }
+            //FIXME check if above switch statement return null;
+            list.add(a);
+        }
+    }
+
+    public List<Ability> getAbilityFromUniqueTrait(){
+        List<Ability> list = new LinkedList<>();
+        for (Medal medal : medalSet){
+            list.add(medal.getUniqueTrait())
+        }
+        return list;
+    }
+
+    public getAllAbilityFromThisSet(){
+        List<Ability> list = new LinkedList<>();
+        list.addAll(getAbilityFromTag());
+        list.addAll(getAbilityFromUniqueTrait());
+        return list;
+    }
     private boolean isValidPosition(int position){
         return position >= 0 && position < medalSet.length;
     }
