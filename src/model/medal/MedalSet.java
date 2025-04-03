@@ -1,5 +1,6 @@
 package model.medal;
 
+import model.ability.Ability;
 import model.ability.AffectType;
 import model.service.GameService;
 
@@ -41,23 +42,6 @@ public class MedalSet {
     }*/
 
     private void setEffects(){
-        for(Map.Entry<MedalTag, Integer> entry : tags.entrySet()){
-            MedalTag tag = entry.getKey();
-
-            //only add if combine tag has 2 or greater
-            if (entry.getValue() >= 2) {
-                switch (AffectType.getAffectType(tag.typeid)){
-                    case SKILL_1         -> skill1.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                    case SKILL_2         -> skill2.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                    case DODGE           -> dodge.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                    case CAPTURE_SPEED   -> captureSpeed.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                    case INCREASE_DAMAGE -> increaseDamage.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                    case DECREASE_DAMAGE -> decreaseDamage.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-
-                    default              -> extraAffects.add(tag.getAffectByNumberCombineTag(entry.getValue()));
-                }
-            }
-        }
 
     }
 
@@ -68,45 +52,47 @@ public class MedalSet {
         if (isValidPosition(position)) this.medalSet[position] = null;
     }
     public void removeAll(){
-        for (int i=0; i < this.medalSet.length){
+        for (int i=0; i < this.medalSet.length; i++){
             this.medalSet[i] = null;
         }
     }
-    public Map<MedalTag, Integer> getCombineTags(){
+    public Map<MedalTag, Integer> getCombineTags() throws IOException {
         Map<MedalTag, Integer> map = new HashMap<>();
         for (int i=0; i < this.medalSet.length; i++){
             List<MedalTag> tagsOfThisMedal = this.medalSet[i].getTagList();
             for (MedalTag tag : tagsOfThisMedal){
                 map.put(tag,
-                        map.getOrDefault(tag, 0) +1)
+                        map.getOrDefault(tag, 0) +1);
             }
         }
         return map;
     }
     //Ability
-    public List<Ability> getAbilityFromTag(){
+    public List<Ability> getAbilityFromTag() throws IOException {
         List<Ability> list = new LinkedList<>();
         Map<MedalTag, Integer> combineTags = getCombineTags();
 
-        for (MedalTag tag : Map.entries(combineTags)){
-            Ability a = switch(map.get(tag)){
+        for (MedalTag tag : combineTags.keySet()){
+
+            Ability a = switch(combineTags.get(tag)){
                 case 2 -> tag.getPairAffect();
                 case 3 -> tag.getTrioAffect();
-            }
-            //FIXME check if above switch statement return null;
+                default -> throw new IllegalStateException("Unexpected value: " + combineTags.get(tag));
+            };
             list.add(a);
-        }
-    }
-
-    public List<Ability> getAbilityFromUniqueTrait(){
-        List<Ability> list = new LinkedList<>();
-        for (Medal medal : medalSet){
-            list.add(medal.getUniqueTrait())
         }
         return list;
     }
 
-    public getAllAbilityFromThisSet(){
+    public List<Ability> getAbilityFromUniqueTrait() throws IOException {
+        List<Ability> list = new LinkedList<>();
+        for (Medal medal : medalSet){
+            list.add(medal.getUniqueTrait());
+        }
+        return list;
+    }
+
+    public List<Ability> getAllAbilityFromThisSet() throws IOException {
         List<Ability> list = new LinkedList<>();
         list.addAll(getAbilityFromTag());
         list.addAll(getAbilityFromUniqueTrait());

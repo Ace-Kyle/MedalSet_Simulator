@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import model.ability.Ability;
 import model.ability.Affect;
+import model.ability.AffectType;
 import model.character.Character;
 import model.character.CharacterTag;
 import model.character.ClassType;
@@ -253,6 +254,11 @@ public class GameService {
                 .filter(tag -> tag.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+
+    //FIXME - implement
+    public AffectType getAffectTypeById(int id){
+        return null;
     }
 
 
