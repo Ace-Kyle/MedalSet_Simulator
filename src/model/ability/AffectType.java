@@ -1,10 +1,16 @@
 package model.ability;
 
+import model.service.GameService;
+
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class AffectType {
+
+
     public enum Type {
         SKILL_1,
         SKILL_2,
@@ -35,13 +41,26 @@ public class AffectType {
         return affectType.containsKey(typeId) &&
                 affectType.get(typeId) != Type.UNDEFINED;
     }
+    public static AffectType getAffectTypeById(int id) throws IOException {
+        return GameService.getInstance().getAffectTypeById(id);
+    }
 
-    public Map<Integer, List<Ability>> classifyAbilityByAffectType(List<Ability> list){
-        Map<AffectType, List<Ability>> map = new HashMap<>();
+    public Map<AffectType, List<Affect>> classifyAffectByAffectType(List<Ability> list) throws IOException {
+        Map<AffectType, List<Affect>> map = new HashMap<>();
         for (Ability a : list){
-            //FIXME - complete it
-            //map.getOrDefault()
+            //get list of effects from ability
+            for (Affect effect : a.getAffects()){
+
+                int affectTypeId = effect.getAffect_type();
+                AffectType type = AffectType.getAffectTypeById(affectTypeId);
+                List<Affect> group = map.getOrDefault(
+                        type,
+                        new LinkedList<Affect>());
+                group.add(effect);    //add affect to group
+                map.put(type, group); //add to result map
+            }
         }
+        return map;
     }
 
     @Override
