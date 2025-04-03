@@ -21,6 +21,11 @@ public class MedalTag {
     private int sort_id;
 
     public MedalTag(){}
+    @override
+    public boolean equal(MedalTag tag){
+        //check if it is instance of
+        return this.id == tag.getId();
+    }
 
     // Getters and setters
     public int getId() { return id; }
