@@ -47,14 +47,17 @@ public class MedalTag {
     public void setSort_id(int sort_id) { this.sort_id = sort_id; }
 
 
-    public String getAffectByNumberCombineTag(int number) {
+    public Ability getAffectByNumberCombineTag(int number) {
         //depend on number of medal have the same specific tag,
         //it will give correspond effects
         return switch (number){
-            case 2 -> new Ability(this.effect_pair).getAffects().toString();
-            case 3 -> new Ability(this.effect_trio).getAffects().toString();
+            //case 2 -> new Ability(this.effect_pair).getAffects().toString();
+            case 2 -> new Ability(this.effect_pair);
+            case 3 -> new Ability(this.effect_trio);
             default -> "";
         };
     }
+    public Ability getPairAffect(){ return new Ability(this.effect_pair);}
+    public Ability getTrioAffect(){ return new Ability(this.effect_trio);}
 
 }
