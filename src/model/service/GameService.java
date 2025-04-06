@@ -10,6 +10,7 @@ import model.character.CharacterTag;
 import model.character.ClassType;
 import model.character.ElementType;
 import model.medal.Medal;
+import model.medal.MedalAffectType;
 import model.medal.MedalTag;
 
 import java.io.File;
@@ -255,10 +256,31 @@ public class GameService {
                 .findFirst()
                 .orElse(null);
     }
-
-    //FIXME - implement
+    //FIXME - remove implement affectType because cannot found affect_type
+    //in crawl data
     public AffectType getAffectTypeById(int id){
         return null;
+    }
+    public MedalAffectType getMedalAffectTypeById(int id){
+        return gameData.getMedalAffectType().stream()
+                .filter(type -> type.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+    public MedalAffectType getMedalAffectTypeByName(String name){
+        return gameData.getMedalAffectType().stream()
+                .filter(type -> type.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public boolean isMedalAffectTypeNameHasId(String name, int id){
+        long found = gameData.getMedalAffectType().stream()
+                .filter(type ->
+                        type.getName().equalsIgnoreCase(name) &&
+                        Arrays.asList(type.getType_ids()).contains(id))
+                .count();
+        return found >= 1;
     }
 
 
