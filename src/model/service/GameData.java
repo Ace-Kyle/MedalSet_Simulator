@@ -5,6 +5,7 @@ import model.ability.Ability;
 import model.character.*;
 import model.character.Character;
 import model.medal.Medal;
+import model.medal.MedalAffectType;
 import model.medal.MedalTag;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class GameData {
     private List<ClassType> chara_role;
     private List<CharacterTag> character_tag;
     private List<CharacterTeamSkill> chara_team_skill;
+    private List<MedalAffectType> medal_affect_type;
 
     // Getters and setters
     public List<Ability> getAbility() { return ability; }
@@ -38,9 +40,19 @@ public class GameData {
     public List<MedalTag> getMedal_tag() { return medal_tag; }
     public void setMedal_tag(List<MedalTag> medal_tag) { this.medal_tag = medal_tag; }
 
+    //extent adding
     public List<ElementType> getElement() { return chara_class; }
     public List<ClassType> getRole() { return chara_role; }
     public List<CharacterTeamSkill> getCharacterTeamSkill() { return chara_team_skill; }
     public List<CharacterTag> getCharacterTag() { return character_tag; }
     public List<Skill> getSkill() { return chara_skill; }
+    public void setSkill(List<Skill> skill) { this.chara_skill = skill; }
+
+    public List<MedalAffectType> getMedalAffectType() {
+        return medal_affect_type;
+    }
+
+    public void setMedalAffectType(List<MedalAffectType> medal_affect_type) {
+        this.medal_affect_type = medal_affect_type;
+    }
 }

@@ -63,6 +63,7 @@ public class DetailAffectPattern {
     }
 
     public static void main(String[] args) {
+        //for testing only
         List<String> extraAffects    = new LinkedList<>(); //not in below category
         List<String> skill1          = new LinkedList<>();
         List<String> skill2          = new LinkedList<>();
